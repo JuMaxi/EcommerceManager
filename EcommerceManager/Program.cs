@@ -1,6 +1,8 @@
 using EcommerceManager.Db;
+using EcommerceManager.DbAccess;
 using EcommerceManager.Interfaces;
 using EcommerceManager.Services;
+using EcommerceManager.Validators;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<ICategoryDbAccess, CategoryDbAccess>();
+builder.Services.AddTransient<IValidateCategory, ValidateCategory>();
 
 
 
