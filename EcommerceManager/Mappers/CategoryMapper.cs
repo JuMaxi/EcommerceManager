@@ -27,13 +27,22 @@ namespace EcommerceManager.Mappers
             List<CategoryResponse> listCategoriesResponse = new();
             foreach(Category c in list)
             {
+                Category parent = new();
+
+                if(c.Parent is not null)
+                {
+                    parent.Name = c.Parent.Name;
+                    parent.Id = c.Parent.Id;
+                }
+                
+
                 CategoryResponse categoryResponse = new()
                 {
                     Name = c.Name,
                     Description = c.Description,
                     Image = c.Image,
-                    ParentName = c.Parent.Name,
-                    ParentId = c.Parent.Id
+                    ParentName = parent.Name,
+                    ParentId = parent.Id
                 };
                 listCategoriesResponse.Add(categoryResponse);
             }
