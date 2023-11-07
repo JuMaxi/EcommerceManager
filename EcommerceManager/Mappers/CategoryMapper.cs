@@ -1,6 +1,7 @@
 ﻿using EcommerceManager.Interfaces;
 using EcommerceManager.Models.DataBase;
 using EcommerceManager.Models.Requests;
+using EcommerceManager.Models.Responses;
 
 namespace EcommerceManager.Mappers
 {
@@ -20,6 +21,23 @@ namespace EcommerceManager.Mappers
             };
 
             return category;
+        }
+        public List<CategoryResponse> ConvertCategoryToCategoryResponse(List<Category> list)
+        {
+            List<CategoryResponse> listCategoriesResponse = new();
+            foreach(Category c in list)
+            {
+                CategoryResponse categoryResponse = new()
+                {
+                    Name = c.Name,
+                    Description = c.Description,
+                    Image = c.Image,
+                    ParentName = c.Parent.Name,
+                    ParentId = c.Parent.Id
+                };
+                listCategoriesResponse.Add(categoryResponse);
+            }
+            return listCategoriesResponse;
         }
     }
 }

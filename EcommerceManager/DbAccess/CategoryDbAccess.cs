@@ -2,6 +2,7 @@
 using EcommerceManager.Interfaces;
 using EcommerceManager.Models.DataBase;
 using EcommerceManager.Models.Requests;
+using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceManager.DbAccess
 {
@@ -33,6 +34,12 @@ namespace EcommerceManager.DbAccess
         public Category GetCategoryFromDbByDescription(string description)
         {
             return _dbContext.Categories.Where(c => c.Description.Equals(description)).FirstOrDefault();
+        }
+
+        public List<Category> GetListCategoriesFromDb()
+        {
+            var allCategories = _dbContext.Categories.Include(c => c.Parent).ToList();
+            return allCategories;
         }
         
     }

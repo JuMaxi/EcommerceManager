@@ -24,6 +24,12 @@ namespace EcommerceManager.Services
             _categoryDbAccess.AddNewCategory(category);
         }
 
+        public List<Category> GetAllCategoriesFromDb()
+        {
+            List<Category> categories = _categoryDbAccess.GetListCategoriesFromDb();
+            return categories;
+        }
+
         
     }
 }
