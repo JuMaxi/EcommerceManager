@@ -1,6 +1,7 @@
 ﻿using EcommerceManager.Db;
 using EcommerceManager.Interfaces;
 using EcommerceManager.Models.DataBase;
+using EcommerceManager.Models.Requests;
 
 namespace EcommerceManager.DbAccess
 {
@@ -13,25 +14,26 @@ namespace EcommerceManager.DbAccess
             _dbContext = dbContext;
         }
 
-        public void AddNewCategory(CategoryRequest category)
+        public void AddNewCategory(Category category)
         {
             _dbContext.Categories.Add(category);
             _dbContext.SaveChanges();
         }
 
-        public CategoryRequest GetCategoryFromDbById(int id)
+        public Category GetCategoryFromDbById(int id)
         {
             return _dbContext.Categories.Where(c => c.Id.Equals(id)).FirstOrDefault();
         }
 
-        public CategoryRequest GetCategoryFromDbByName(string name)
+        public Category GetCategoryFromDbByName(string name)
         {
             return _dbContext.Categories.Where(c => c.Name.Equals(name)).FirstOrDefault();
         }
 
-        public CategoryRequest GetCategoryFromDbByDescription(string description)
+        public Category GetCategoryFromDbByDescription(string description)
         {
             return _dbContext.Categories.Where(c => c.Description.Equals(description)).FirstOrDefault();
         }
+        
     }
 }

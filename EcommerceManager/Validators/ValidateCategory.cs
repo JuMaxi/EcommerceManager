@@ -11,7 +11,7 @@ namespace EcommerceManager.Validators
             _categoryDbAccess = categoryDbAccess;
         }
 
-        public void Validate(CategoryRequest category)
+        public void Validate(Category category)
         {
             ValidateName(category.Name);
             ValidateDescription(category.Description);

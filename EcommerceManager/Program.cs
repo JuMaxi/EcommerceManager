@@ -1,6 +1,7 @@
 using EcommerceManager.Db;
 using EcommerceManager.DbAccess;
 using EcommerceManager.Interfaces;
+using EcommerceManager.Mappers;
 using EcommerceManager.Services;
 using EcommerceManager.Validators;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<ICategoryDbAccess, CategoryDbAccess>();
 builder.Services.AddTransient<IValidateCategory, ValidateCategory>();
+builder.Services.AddTransient<ICategoryMapper, CategoryMapper>();
 
 
 

@@ -16,7 +16,7 @@ namespace EcommerceManager.Tests.Validators
         [Fact]
         public void When_name_is_null_should_throw_new_exception()
         {
-            CategoryRequest category = new() { Name = null };
+            Category category = new() { Name = null };
 
             ValidateCategory validatorCategory = new(null);
 
@@ -28,7 +28,7 @@ namespace EcommerceManager.Tests.Validators
         [Fact]
         public void When_name_length_is_zero_should_throw_new_exception()
         {
-            CategoryRequest category = new() { Name = "" };
+            Category category = new() { Name = "" };
 
             ValidateCategory validatorCategory = new(null);
 
@@ -40,8 +40,8 @@ namespace EcommerceManager.Tests.Validators
         [Fact]
         public void When_name_is_already_registered_into_database_should_throw_new_exception()
         {
-            CategoryRequest category = new() { Name = "Trousers" };
-            CategoryRequest category2 = new() { Name = "Trousers" };
+            Category category = new() { Name = "Trousers" };
+            Category category2 = new() { Name = "Trousers" };
 
             var dbAccessCategoryFake = Substitute.For<ICategoryDbAccess>();
             dbAccessCategoryFake.GetCategoryFromDbByName(category2.Name).Returns(category2);
@@ -56,13 +56,13 @@ namespace EcommerceManager.Tests.Validators
         [Fact]
         public void When_description_is_null_should_throw_new_exception()
         {
-            CategoryRequest category = new()
+            Category category = new()
             {
                 Name = "Trousers",
                 Description = null
             };
 
-            CategoryRequest category2 = new()
+            Category category2 = new()
             {
                 Name = "Skirt"
             };
@@ -80,13 +80,13 @@ namespace EcommerceManager.Tests.Validators
         [Fact]
         public void When_description_length_is_zero_should_throw_new_exception()
         {
-            CategoryRequest category = new()
+            Category category = new()
             {
                 Name = "Trousers",
                 Description = ""
             };
 
-            CategoryRequest category2 = new()
+            Category category2 = new()
             {
                 Name = "Skirt"
             };
@@ -104,13 +104,13 @@ namespace EcommerceManager.Tests.Validators
         [Fact]
         public void When_description_is_already_registered_into_database_should_throw_new_exception()
         {
-            CategoryRequest category = new()
+            Category category = new()
             {
                 Name = "Trousers",
                 Description = "Women Trousers"
             };
 
-            CategoryRequest category2 = new()
+            Category category2 = new()
             {
                 Name = "Skirts",
                 Description = "Women Trousers"
@@ -129,14 +129,14 @@ namespace EcommerceManager.Tests.Validators
         [Fact]
         public void When_image_is_null_should_throw_new_exception()
         {
-            CategoryRequest category = new()
+            Category category = new()
             {
                 Name = "Trousers",
                 Description = "Women Trousers",
                 Image = null
             };
 
-            CategoryRequest category2 = new()
+            Category category2 = new()
             {
                 Id = 1,
                 Name = "Skirt",
@@ -156,14 +156,14 @@ namespace EcommerceManager.Tests.Validators
         [Fact]
         public void When_image_length_is_zero_should_throw_new_exception()
         {
-            CategoryRequest category = new()
+            Category category = new()
             {
                 Name = "Trousers",
                 Description = "Women Trousers",
                 Image = ""
             };
 
-            CategoryRequest category2 = new()
+            Category category2 = new()
             {
                 Id = 1,
                 Name = "Skirt",

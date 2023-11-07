@@ -4,6 +4,6 @@ namespace EcommerceManager.Interfaces
 {
     public interface IValidateCategory
     {
-        public void Validate(CategoryRequest category);
+        public void Validate(Category category);
     }
 }

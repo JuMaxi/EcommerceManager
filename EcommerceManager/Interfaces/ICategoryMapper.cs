@@ -3,8 +3,8 @@ using EcommerceManager.Models.Requests;
 
 namespace EcommerceManager.Interfaces
 {
-    public interface ICategoryService
+    public interface ICategoryMapper
     {
-        public void InsertNewCategory(Category category);
+        public Category ConvertCategoryRequestToCategory(CategoryRequest categoryRequest);
     }
 }
