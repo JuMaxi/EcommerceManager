@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EcommerceManager.Controllers
 {
     [ApiController]
-    [Route("[]Controller")]
+    [Route("[Controller]")]
     public class CategoryController : ControllerBase
     {
         readonly ICategoryService _categoryService;
