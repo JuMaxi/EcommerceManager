@@ -16,7 +16,7 @@ namespace EcommerceManager.Controllers
         }
 
         [HttpPost]
-        public void AddNewCategory(Category category)
+        public void AddNewCategory(CategoryRequest category)
         {
             _categoryService.InsertNewCategory(category);
         }

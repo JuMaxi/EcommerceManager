@@ -11,7 +11,7 @@ namespace EcommerceManager.Validators
             _categoryDbAccess = categoryDbAccess;
         }
 
-        public void Validate(Category category)
+        public void Validate(CategoryRequest category)
         {
             ValidateName(category.Name);
             ValidateDescription(category.Description);
@@ -38,7 +38,7 @@ namespace EcommerceManager.Validators
             }
             if(_categoryDbAccess.GetCategoryFromDbByDescription(description) != null)
             {
-                throw new Exception("the category Description " + description + " is already registered. Change the description to continue");
+                throw new Exception("The category Description " + description + " is already registered. Change the description to continue");
             }
         }
         static void ValidateImage(string image)

@@ -13,23 +13,23 @@ namespace EcommerceManager.DbAccess
             _dbContext = dbContext;
         }
 
-        public void AddNewCategory(Category category)
+        public void AddNewCategory(CategoryRequest category)
         {
             _dbContext.Categories.Add(category);
             _dbContext.SaveChanges();
         }
 
-        public Category GetCategoryFromDbById(int id)
+        public CategoryRequest GetCategoryFromDbById(int id)
         {
             return _dbContext.Categories.Where(c => c.Id.Equals(id)).FirstOrDefault();
         }
 
-        public Category GetCategoryFromDbByName(string name)
+        public CategoryRequest GetCategoryFromDbByName(string name)
         {
             return _dbContext.Categories.Where(c => c.Name.Equals(name)).FirstOrDefault();
         }
 
-        public Category GetCategoryFromDbByDescription(string description)
+        public CategoryRequest GetCategoryFromDbByDescription(string description)
         {
             return _dbContext.Categories.Where(c => c.Description.Equals(description)).FirstOrDefault();
         }

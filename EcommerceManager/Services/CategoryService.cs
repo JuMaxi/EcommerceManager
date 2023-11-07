@@ -14,7 +14,7 @@ namespace EcommerceManager.Services
             _categoryDbAccess = categoryDbAccess;
         }
 
-        public void InsertNewCategory(Category category)
+        public void InsertNewCategory(CategoryRequest category)
         {
             category.Parent = _categoryDbAccess.GetCategoryFromDbById(category.Parent.Id);
             _categoryDbAccess.AddNewCategory(category);
