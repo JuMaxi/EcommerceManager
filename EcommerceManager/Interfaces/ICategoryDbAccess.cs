@@ -8,8 +8,8 @@ namespace EcommerceManager.Interfaces
         public Task<Category> GetCategoryFromDbById(int id);
         public Task<Category> GetCategoryFromDbByName(string name);
         public Task<Category> GetCategoryFromDbByDescription(string description);
-        public List<Category> GetListCategoriesFromDb();
-        public void UpdateCategory(Category category);
+        public Task<List<Category>> GetListCategoriesFromDb();
+        public Task UpdateCategory(Category category);
         public Task DeleteCategory(int id);
     }
 }

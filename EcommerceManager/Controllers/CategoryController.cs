@@ -27,9 +27,9 @@ namespace EcommerceManager.Controllers
         }
 
         [HttpGet]
-        public List<CategoryResponse> GetCategoriesFromDb()
+        public async Task<List<CategoryResponse>> GetCategoriesFromDb()
         {
-            List<Category> categories = _categoryService.GetAllCategoriesFromDb();
+            List<Category> categories = await _categoryService.GetAllCategoriesFromDb();
 
             List<CategoryResponse> listCategoriesResponse = _categoryMapper.ConvertCategoryToCategoryResponse(categories);
 
@@ -46,9 +46,9 @@ namespace EcommerceManager.Controllers
         }
 
         [HttpDelete("{id}")]
-        public void DeleteCategory([FromRoute] int id)
+        public async Task DeleteCategory([FromRoute] int id)
         {
-            _categoryService.DeleteCategory(id);
+           await _categoryService.DeleteCategory(id);
         }
     }
 }

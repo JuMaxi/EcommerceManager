@@ -36,23 +36,23 @@ namespace EcommerceManager.DbAccess
             return await _dbContext.Categories.Where(c => c.Description.Equals(description)).FirstOrDefaultAsync();
         }
 
-        public List<Category> GetListCategoriesFromDb()
+        public async Task<List<Category>> GetListCategoriesFromDb()
         {
-            var allCategories = _dbContext.Categories.Include(c => c.Parent).ToList();
+            var allCategories = await _dbContext.Categories.Include(c => c.Parent).ToListAsync();
             return allCategories;
         }
 
-        public void UpdateCategory(Category category)
+        public async Task UpdateCategory(Category category)
         {
             _dbContext.Categories.Update(category);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task DeleteCategory(int id)
         {
             Category category = await GetCategoryFromDbById(id);
             _dbContext.Categories.Remove(category);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
         }
         
     }

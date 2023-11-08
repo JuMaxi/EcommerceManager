@@ -21,9 +21,9 @@ namespace EcommerceManager.Services
             await _categoryDbAccess.AddNewCategory(category);
         }
 
-        public List<Category> GetAllCategoriesFromDb()
+        public async Task<List<Category>> GetAllCategoriesFromDb()
         {
-            List<Category> categories = _categoryDbAccess.GetListCategoriesFromDb();
+            List<Category> categories = await _categoryDbAccess.GetListCategoriesFromDb();
             return categories;
         }
 
@@ -44,12 +44,12 @@ namespace EcommerceManager.Services
                 toUpdate.Parent = parent;
             }
 
-            _categoryDbAccess.UpdateCategory(toUpdate);
+            await _categoryDbAccess.UpdateCategory(toUpdate);
         }
         
-        public void DeleteCategory(int id) 
+        public async Task DeleteCategory(int id) 
         { 
-            _categoryDbAccess.DeleteCategory(id);
+            await _categoryDbAccess.DeleteCategory(id);
         }
     }
 }

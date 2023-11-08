@@ -6,8 +6,8 @@ namespace EcommerceManager.Interfaces
     public interface ICategoryService
     {
         public Task InsertNewCategory(Category category);
-        public List<Category> GetAllCategoriesFromDb();
+        public Task<List<Category>> GetAllCategoriesFromDb();
         public Task UpdateCategory(Category category);
-        public void DeleteCategory(int id);
+        public Task DeleteCategory(int id);
     }
 }
