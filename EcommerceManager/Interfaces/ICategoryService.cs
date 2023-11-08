@@ -7,5 +7,6 @@ namespace EcommerceManager.Interfaces
     {
         public void InsertNewCategory(Category category);
         public List<Category> GetAllCategoriesFromDb();
+        public void UpdateCategory(Category category);
     }
 }

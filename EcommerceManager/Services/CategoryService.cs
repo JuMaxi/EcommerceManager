@@ -30,6 +30,25 @@ namespace EcommerceManager.Services
             return categories;
         }
 
+        public void UpdateCategory(Category category)
+        {
+            _validateCategory.Validate(category);
+
+            Category toUpdate = _categoryDbAccess.GetCategoryFromDbById(category.Id);
+
+            toUpdate.Name = category.Name;
+            toUpdate.Description = category.Description;
+            toUpdate.Image = category.Image;
+
+            Category parent = new();
+            if(category.Parent != null)
+            {
+                parent = _categoryDbAccess.GetCategoryFromDbById(category.Parent.Id);
+            }
+            toUpdate.Parent = parent;
+
+            _categoryDbAccess.UpdateCategory(toUpdate);
+        }
         
     }
 }

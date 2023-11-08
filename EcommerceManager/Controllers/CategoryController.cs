@@ -35,5 +35,14 @@ namespace EcommerceManager.Controllers
 
             return listCategoriesResponse;
         }
+
+        [HttpPut("{id}")]
+        public void UpdateCategory([FromRoute] int id, [FromBody] CategoryRequest categoryRequest)
+        {
+            Category category = _categoryMapper.ConvertCategoryRequestToCategory(categoryRequest);
+            category.Id = id;
+
+            _categoryService.UpdateCategory(category);
+        }
     }
 }

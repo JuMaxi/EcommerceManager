@@ -41,6 +41,12 @@ namespace EcommerceManager.DbAccess
             var allCategories = _dbContext.Categories.Include(c => c.Parent).ToList();
             return allCategories;
         }
+
+        public void UpdateCategory(Category category)
+        {
+            _dbContext.Categories.Update(category);
+            _dbContext.SaveChanges();
+        }
         
     }
 }

@@ -10,5 +10,6 @@ namespace EcommerceManager.Interfaces
         public Category GetCategoryFromDbByName(string name);
         public Category GetCategoryFromDbByDescription(string description);
         public List<Category> GetListCategoriesFromDb();
+        public void UpdateCategory(Category category);
     }
 }

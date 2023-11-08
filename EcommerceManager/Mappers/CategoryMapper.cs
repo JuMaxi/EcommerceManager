@@ -34,7 +34,6 @@ namespace EcommerceManager.Mappers
                     parent.Name = c.Parent.Name;
                     parent.Id = c.Parent.Id;
                 }
-                
 
                 CategoryResponse categoryResponse = new()
                 {
