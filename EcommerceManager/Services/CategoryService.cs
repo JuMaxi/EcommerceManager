@@ -50,5 +50,9 @@ namespace EcommerceManager.Services
             _categoryDbAccess.UpdateCategory(toUpdate);
         }
         
+        public void DeleteCategory(int id) 
+        { 
+            _categoryDbAccess.DeleteCategory(id);
+        }
     }
 }

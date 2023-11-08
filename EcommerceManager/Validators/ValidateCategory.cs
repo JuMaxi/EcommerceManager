@@ -32,7 +32,6 @@ namespace EcommerceManager.Validators
                     throw new Exception("This category Name " + category.Name + " is already registered. Change the name to continue.");
                 }
             }
-           
         }
 
         private void ValidateDescription(Category category)

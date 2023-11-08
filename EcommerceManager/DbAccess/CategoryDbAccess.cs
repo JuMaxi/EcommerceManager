@@ -47,6 +47,13 @@ namespace EcommerceManager.DbAccess
             _dbContext.Categories.Update(category);
             _dbContext.SaveChanges();
         }
+
+        public void DeleteCategory(int id)
+        {
+            Category category = GetCategoryFromDbById(id);
+            _dbContext.Categories.Remove(category);
+            _dbContext.SaveChanges();
+        }
         
     }
 }

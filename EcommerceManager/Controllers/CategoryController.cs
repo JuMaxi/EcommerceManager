@@ -44,5 +44,11 @@ namespace EcommerceManager.Controllers
 
             _categoryService.UpdateCategory(category);
         }
+
+        [HttpDelete("{id}")]
+        public void DeleteCategory([FromRoute] int id)
+        {
+            _categoryService.DeleteCategory(id);
+        }
     }
 }

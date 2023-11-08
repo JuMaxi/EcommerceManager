@@ -1,5 +1,4 @@
 ﻿using EcommerceManager.Models.DataBase;
-using EcommerceManager.Models.Requests;
 
 namespace EcommerceManager.Interfaces
 {
@@ -11,5 +10,6 @@ namespace EcommerceManager.Interfaces
         public Category GetCategoryFromDbByDescription(string description);
         public List<Category> GetListCategoriesFromDb();
         public void UpdateCategory(Category category);
+        public void DeleteCategory(int id);
     }
 }
