@@ -20,10 +20,10 @@ namespace EcommerceManager.Controllers
         }
 
         [HttpPost]
-        public void AddNewCategory(CategoryRequest categoryRequest)
+        public async Task AddNewCategory(CategoryRequest categoryRequest)
         {
             Category category = _categoryMapper.ConvertCategoryRequestToCategory(categoryRequest);
-            _categoryService.InsertNewCategory(category);
+            await _categoryService.InsertNewCategory(category);
         }
 
         [HttpGet]
@@ -37,12 +37,12 @@ namespace EcommerceManager.Controllers
         }
 
         [HttpPut("{id}")]
-        public void UpdateCategory([FromRoute] int id, [FromBody] CategoryRequest categoryRequest)
+        public async Task UpdateCategory([FromRoute] int id, [FromBody] CategoryRequest categoryRequest)
         {
             Category category = _categoryMapper.ConvertCategoryRequestToCategory(categoryRequest);
             category.Id = id;
 
-            _categoryService.UpdateCategory(category);
+            await _categoryService.UpdateCategory(category);
         }
 
         [HttpDelete("{id}")]

@@ -8,5 +8,7 @@ namespace EcommerceManager.Tests.Services
 {
     public class CategoryServiceTests
     {
+        
+        
     }
 }

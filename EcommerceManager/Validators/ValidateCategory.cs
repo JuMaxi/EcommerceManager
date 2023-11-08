@@ -11,14 +11,14 @@ namespace EcommerceManager.Validators
             _categoryDbAccess = categoryDbAccess;
         }
 
-        public void Validate(Category category)
+        public async Task Validate(Category category)
         {
-            ValidateName(category);
-            ValidateDescription(category);
+            await ValidateName(category);
+            await ValidateDescription(category);
             ValidateImage(category.Image);
         }
 
-        private void ValidateName(Category category)
+        private async Task ValidateName(Category category)
         {
             if (string.IsNullOrEmpty(category.Name))
             {
@@ -27,14 +27,14 @@ namespace EcommerceManager.Validators
 
             if(category.Id == 0)
             {
-                if (_categoryDbAccess.GetCategoryFromDbByName(category.Name) != null)
+                if (await _categoryDbAccess.GetCategoryFromDbByName(category.Name) != null)
                 {
                     throw new Exception("This category Name " + category.Name + " is already registered. Change the name to continue.");
                 }
             }
         }
 
-        private void ValidateDescription(Category category)
+        private async Task ValidateDescription(Category category)
         {
             if (string.IsNullOrEmpty(category.Description))
             {
@@ -43,7 +43,7 @@ namespace EcommerceManager.Validators
 
             if(category.Id == 0)
             {
-                if (_categoryDbAccess.GetCategoryFromDbByDescription(category.Description) != null)
+                if (await _categoryDbAccess.GetCategoryFromDbByDescription(category.Description) != null)
                 {
                     throw new Exception("The category Description " + category.Description + " is already registered. Change the description to continue");
                 }

@@ -1,8 +1,5 @@
-﻿using EcommerceManager.Db;
-using EcommerceManager.DbAccess;
-using EcommerceManager.Interfaces;
+﻿using EcommerceManager.Interfaces;
 using EcommerceManager.Models.DataBase;
-using EcommerceManager.Models.Requests;
 
 namespace EcommerceManager.Services
 {
@@ -17,11 +14,11 @@ namespace EcommerceManager.Services
             _validateCategory = validateCategory;
         }
 
-        public void InsertNewCategory(Category category)
+        public async Task InsertNewCategory(Category category)
         {
-            _validateCategory.Validate(category);
-            category.Parent = _categoryDbAccess.GetCategoryFromDbById(category.Parent.Id);
-            _categoryDbAccess.AddNewCategory(category);
+            await _validateCategory.Validate(category);
+            category.Parent = await _categoryDbAccess.GetCategoryFromDbById(category.Parent.Id);
+            await _categoryDbAccess.AddNewCategory(category);
         }
 
         public List<Category> GetAllCategoriesFromDb()
@@ -30,22 +27,22 @@ namespace EcommerceManager.Services
             return categories;
         }
 
-        public void UpdateCategory(Category category)
+        public async Task UpdateCategory(Category category)
         {
-            _validateCategory.Validate(category);
+            await _validateCategory.Validate(category);
 
-            Category toUpdate = _categoryDbAccess.GetCategoryFromDbById(category.Id);
+            Category toUpdate = await _categoryDbAccess.GetCategoryFromDbById(category.Id);
 
             toUpdate.Name = category.Name;
             toUpdate.Description = category.Description;
             toUpdate.Image = category.Image;
-
-            Category parent = new();
+            
             if(category.Parent != null)
             {
-                parent = _categoryDbAccess.GetCategoryFromDbById(category.Parent.Id);
+                Category parent = new();
+                parent = await _categoryDbAccess.GetCategoryFromDbById(category.Parent.Id);
+                toUpdate.Parent = parent;
             }
-            toUpdate.Parent = parent;
 
             _categoryDbAccess.UpdateCategory(toUpdate);
         }

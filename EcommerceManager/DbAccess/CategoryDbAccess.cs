@@ -15,25 +15,25 @@ namespace EcommerceManager.DbAccess
             _dbContext = dbContext;
         }
 
-        public void AddNewCategory(Category category)
+        public async Task AddNewCategory(Category category)
         {
-            _dbContext.Categories.Add(category);
-            _dbContext.SaveChanges();
+            await _dbContext.Categories.AddAsync(category);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public Category GetCategoryFromDbById(int id)
+        public async Task<Category> GetCategoryFromDbById(int id)
         {
-            return _dbContext.Categories.Where(c => c.Id.Equals(id)).FirstOrDefault();
+            return await _dbContext.Categories.Where(c => c.Id.Equals(id)).FirstOrDefaultAsync();
         }
 
-        public Category GetCategoryFromDbByName(string name)
+        public async Task<Category> GetCategoryFromDbByName(string name)
         {
-            return _dbContext.Categories.Where(c => c.Name.Equals(name)).FirstOrDefault();
+            return await _dbContext.Categories.Where(c => c.Name.Equals(name)).FirstOrDefaultAsync();
         }
 
-        public Category GetCategoryFromDbByDescription(string description)
+        public async Task<Category> GetCategoryFromDbByDescription(string description)
         {
-            return _dbContext.Categories.Where(c => c.Description.Equals(description)).FirstOrDefault();
+            return await _dbContext.Categories.Where(c => c.Description.Equals(description)).FirstOrDefaultAsync();
         }
 
         public List<Category> GetListCategoriesFromDb()
@@ -48,9 +48,9 @@ namespace EcommerceManager.DbAccess
             _dbContext.SaveChanges();
         }
 
-        public void DeleteCategory(int id)
+        public async Task DeleteCategory(int id)
         {
-            Category category = GetCategoryFromDbById(id);
+            Category category = await GetCategoryFromDbById(id);
             _dbContext.Categories.Remove(category);
             _dbContext.SaveChanges();
         }
